@@ -14,8 +14,6 @@ const mainstyle={
         .then(data=>setPosts(data))
     } ,[])
 
-    
-
     return (
         <div style={mainstyle}>
             <h1>Post count : {posts.length} </h1>

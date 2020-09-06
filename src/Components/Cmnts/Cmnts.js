@@ -31,41 +31,53 @@ const Cmnts = () => {
       .then(data=> setComments(data))
     } ,[])
 
+const [users,setUsers] =useState([])
+  useEffect(()=>{
+    fetch('https://randomuser.me/api?results=1')
+    .then(res => res.json())
+    .then(data=>setUsers(data.results))
+  },[])
+
     return (
         <div>
             {
-                comments.map(comment => <div comment ={comment} >
-                    <List className={classes.root}>
-            <ListItem alignItems="flex-start">
+             comments.map(comment => 
+               <div comment ={comment} >
+                <List className={classes.root}>
+                    <ListItem alignItems="flex-start">
 
-                <ListItemAvatar>
-                <img src="" alt=""/>
-                </ListItemAvatar>
+                    <ListItemAvatar>
+                        {
+                        users.map(user => <div user ={user} >
+                            <img src={user.picture.thumbnail} alt=""/>
+                        </div>)
+                        }
+                    </ListItemAvatar>
 
-                <ListItemText
-                primary={comment.name}
-                
-                secondary={
-                    <React.Fragment>
-                    <Typography
-                        component="span"
-                        variant="body2"
-                        className={classes.inline}
-                        color="textPrimary"
-                    >
-                        <br/>
-                        <h4>{comment.email}</h4>
-                    </Typography>
-                    <br/>
-                    <h6>{comment.body}</h6>
-                    </React.Fragment>
-                }
-                />
-            </ListItem>
+                    <ListItemText
+                    primary={comment.name}
+                    
+                    secondary={
+                            <React.Fragment>
+                            <Typography
+                                component="span"
+                                variant="body2"
+                                className={classes.inline}
+                                color="textPrimary"
+                            >
+                                <br/>
+                                <h4>{comment.email}</h4>
+                            </Typography>
+                            <br/>
+                            <h6>{comment.body}</h6>
+                            </React.Fragment>
+                        }
+                    />
+                    </ListItem>
 
-            <Divider variant="inset" component="li" />
-        </List>
-                    </div>)
+                <Divider variant="inset" component="li" />
+                </List>
+              </div>)
             }
         
         </div>

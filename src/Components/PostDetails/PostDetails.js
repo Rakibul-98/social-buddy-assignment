@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Cmnts from '../Cmnts/Cmnts';
 
-
 const PostDetails = () => {
 
     const commentStyle={
@@ -22,6 +21,8 @@ const PostDetails = () => {
     return (
         <div style={commentStyle}>
            <div>
+           <a href="/home"><button className="btn btn-success">Go home</button></a>
+           <br/>
                 <h1>This is post details of : <span className="text-danger">{postId}</span> </h1>
                 <br/>
                 <h2><span className="text-success">Post title</span> : {postDetails.title} </h2>
@@ -31,6 +32,7 @@ const PostDetails = () => {
             </div>
                 <h2 className="text-danger">Comments</h2>
             <Cmnts/>
+            <a href="/home"><button className="btn btn-success">Go home</button></a>
         </div>
     );
 };

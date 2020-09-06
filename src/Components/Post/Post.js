@@ -27,7 +27,7 @@ const Post = (props) => {
                 <CardContent>
                     <h2>Post No : {id} </h2>
                         <Typography className={classes.title} color="textSecondary" gutterBottom>
-                            {title}
+                            Post title : {title}
                         </Typography>
                 </CardContent>
                 <CardActions>
